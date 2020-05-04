@@ -1,0 +1,49 @@
+- name: "Remove /tmp/{{ crc_file_name }} if exists"
+  file:
+    path:  "/tmp/{{ crc_file_name }}"
+    state: absent
+  ignore_errors: yes 
+
+- name: "Download Code Ready Containers {{ crc_version }}"
+  get_url:
+    url: "{{ crc_url }}/{{ crc_version }}/{{ crc_file_name }}"
+    dest: "/tmp/{{ crc_file_name }}"
+  tags:
+  - download_crc
+
+- name: "Get  {{ crc_file_name }} sha information"
+  stat:
+    path: "/tmp/{{ crc_file_name }}"
+    checksum_algorithm: sha256
+  register: crc_file_name
+  tags:
+  - download_crc
+
+- name: Get crc file sha
+  debug:
+    var: crc_file_name
+  failed_when: crc_sha != crc_file_name.stat.checksum
+  tags:
+  - download_crc
+
+- name: Extract crc-linux-amd64.tar.xz into /tmp/
+  script: "../files/extract_crc_file.sh"
+  become: true
+  become_user: root
+  tags:
+  - extract_crc
+
+- name: Check to see is crc installed
+  command: crc -h
+  changed_when: false
+  failed_when: false
+  register: crc_installed
+  tags:
+  - extract_crc
+
+- name: Check CodeReady Containers executable status
+  fail:
+    msg: "CRC appears to be missing, install failed"
+  when: crc_installed.rc == 2
+  tags:
+  - extract_crc
