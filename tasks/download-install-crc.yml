@@ -27,7 +27,7 @@
   - download_crc
 
 - name: Extract crc-linux-amd64.tar.xz into /tmp/
-  script: "../files/extract_crc_file.sh"
+  script: "files/extract_crc_file.sh"
   become: true
   become_user: root
   tags:

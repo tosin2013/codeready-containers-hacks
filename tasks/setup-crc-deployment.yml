@@ -42,7 +42,7 @@
 
 - name: Copying over dnsmasq configuration for crc
   template:
-    src: ../templates/crc.conf.j2
+    src: templates/crc.conf.j2
     dest:  /etc/NetworkManager/dnsmasq.d/crc.conf
     owner: root
     group: root
@@ -73,7 +73,7 @@
   - setup_crc
 
 - name: Set up the new CodeReady Containers release
-  script: "../files/setup_crc.sh"
+  script: "files/setup_crc.sh"
   tags:
   - setup_cr
 

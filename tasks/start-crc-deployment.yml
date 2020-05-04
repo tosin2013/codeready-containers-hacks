@@ -1,6 +1,6 @@
 - name: Copying over pull-secert.txt
   template:
-    src: ../templates/pull-secret.txt.j2
+    src: templates/pull-secret.txt.j2
     dest:  "{{ pull_secert_path }}"
     owner: admin
     group: admin
