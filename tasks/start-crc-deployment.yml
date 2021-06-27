@@ -33,6 +33,6 @@
 - name: Start CodeReady Deployment
   shell: |
     set -o pipefail
-    crc start -p {{ pull_secert_path }} --log-level {{ log_level }} | tee /tmp/install_status.log
+    crc start -c {{ cpu }} -m {{ memory }} -p {{ pull_secert_path }} --log-level {{ log_level }} | tee /tmp/install_status.log
   tags:
   - start_crc_deployment

@@ -9,14 +9,14 @@ Requirements
 ------------
 
 *  Ansible 
-*  Fedora or RHEL 
+*  Fedora or RHEL 8.x
 * IF using RHEL make sure it is registered
 * OpenShift CodeReady WorkSpaces  pull secert 
   * https://cloud.redhat.com/openshift/install/crc/installer-provisioned
 
 **GET SHA** 
 ```
-$ curl -OL https://mirror.openshift.com/pub/openshift-v4/clients/crc/1.8.0/sha256sum.txt
+$ curl -OL https://mirror.openshift.com/pub/openshift-v4/clients/crc/1.28.0/sha256sum.txt
 $ cat sha256sum.txt | grep crc-linux-amd64.tar.xz | awk '{print $1}'
 ```
 
@@ -85,6 +85,7 @@ Example Playbook
 ----------------
 To run playbook as sudo add the `-K` flag 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+You can get pull secert [here](https://cloud.redhat.com/openshift/install/pull-secret).
 ```
 - hosts: servers
   become: yes

@@ -16,4 +16,4 @@
     remove_oc_tool: false
     delete_crc_deployment: false
   roles:
-    - quarkuscoffeeshop-majestic-monolith
+    - codeready-containers-hacks

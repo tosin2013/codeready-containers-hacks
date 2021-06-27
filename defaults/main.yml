@@ -19,3 +19,8 @@ ocp4_version: 4.4.16
 ocp4_release_url: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{ ocp4_release }}/"
 ocp4_client: "openshift-client-linux-{{ ocp4_version }}.tar.gz"
 remove_oc_tool: false
+
+# 6 vCPU
+cpu: 6
+# 12G of RAM
+memory: 12288
