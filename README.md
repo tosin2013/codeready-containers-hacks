@@ -23,7 +23,8 @@ $ cat sha256sum.txt | grep crc-linux-amd64.tar.xz | awk '{print $1}'
 Inspriation 
 --------------
 [Accessing CodeReady Containers on a Remote Server](https://www.openshift.com/blog/accessing-codeready-containers-on-a-remote-server/) by Jason Dobies  
-[Overview: running crc on a remote server](https://gist.github.com/tmckayus/8e843f90c44ac841d0673434c7de0c6a) by [Trevor McKay](https://gist.github.com/tmckayus)
+[Overview: running crc on a remote server](https://gist.github.com/tmckayus/8e843f90c44ac841d0673434c7de0c6a) by [Trevor McKay](https://gist.github.com/tmckayus)  
+[Deploy Bare-Metal Clusters with CRC](https://gist.github.com/v1k0d3n/9ceec7589b5bab0b61b85c2a1e1c463c)
 
 Features
 --------
@@ -34,8 +35,8 @@ Role Variables
 
 Type  | Description  | Default Value
 --|---|--
-crc_version  | Target CRC version  | 1.10.0
-crc_sha      | SHA informaqtion of the crc-linux-amd64.tar.xz file | 97aa185f6ff88560611f81fbf5991cfced814e8d9ac796947c7bef6374ee7af3
+crc_version  | Target CRC version  | 1.28.0
+crc_sha      | SHA informaqtion of the crc-linux-amd64.tar.xz file | 26c2ef84204233159e3cd33665e5b5fc7a169f88a884f5e50865b4b0a15520fa
 crc_url      |  CRC download URL | https://mirror.openshift.com/pub/openshift-v4/clients/crc/
 crc_file_name  | CRC filename  | crc-linux-amd64.tar.xz
 pull_secert_path | default path of pull secert | /tmp/pull-secert.txt
@@ -63,6 +64,23 @@ Dependencies
 * Follow system requirements from the code ready containers documentation 
 * enable and start sshd
 
+Prerequiestes
+-------------
+Configure sudo user 
+```
+curl -OL https://gist.githubusercontent.com/tosin2013/385054f345ff7129df6167631156fa2a/raw/b67866c8d0ec220c393ea83d2c7056f33c472e65/configure-sudo-user.sh
+chmod +x configure-sudo-user.sh
+./configure-sudo-user.sh
+```
+
+RHEL 8.x Configure system
+```
+sudo su - sudouser
+curl -OL https://gist.githubusercontent.com/tosin2013/ae925297c1a257a1b9ac8157bcc81f31/raw/142d8dd142b031d59c14a7a7ad6f3000ad775453/configure-rhel8.x.sh
+chmod +x configure-rhel8.x.sh
+./configure-rhel8.x.sh
+```
+
 Example Playbook
 ----------------
 To run playbook as sudo add the `-K` flag 
@@ -71,8 +89,8 @@ Including an example of how to use your role (for instance, with variables passe
 - hosts: servers
   become: yes
   vars:
-    crc_version: 1.10.0
-    crc_sha: 97aa185f6ff88560611f81fbf5991cfced814e8d9ac796947c7bef6374ee7af3
+    crc_version: 1.28.0
+    crc_sha: 26c2ef84204233159e3cd33665e5b5fc7a169f88a884f5e50865b4b0a15520fa
     pull_secert_path: /tmp/pull-secert.txt
     pull_secert_content: |
       changeme
@@ -81,7 +99,7 @@ Including an example of how to use your role (for instance, with variables passe
     use_all_in_one_dnsmasq: true 
     log_level: info
     ocp4_release: latest
-    ocp4_version: 4.4.3
+    ocp4_version: 4.7.16
     remove_oc_tool: false
     delete_crc_deployment: false
   roles:

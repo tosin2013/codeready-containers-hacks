@@ -1,7 +1,19 @@
 ---
-- hosts: servers
+- hosts: localhost
   remote_user: admin
-  vars_files:
-  - ../defaults/main.yml
-  tasks:
-  - include: ../tasks/main.yml
+  vars: 
+    crc_version: 1.28.0
+    crc_sha: 26c2ef84204233159e3cd33665e5b5fc7a169f88a884f5e50865b4b0a15520fa
+    pull_secert_path: /tmp/pull-secert.txt
+    pull_secert_content: |
+      changeme
+    use_all_in_one_haproxy: true
+    haproxy_ip: ""
+    use_all_in_one_dnsmasq: true 
+    log_level: info
+    ocp4_release: latest
+    ocp4_version: 4.7.16
+    remove_oc_tool: false
+    delete_crc_deployment: false
+  roles:
+    - quarkuscoffeeshop-majestic-monolith
