@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: crc_device
   remote_user: admin
   vars: 
     crc_version: 1.28.0

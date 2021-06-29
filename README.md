@@ -24,7 +24,7 @@ Inspriation
 --------------
 [Accessing CodeReady Containers on a Remote Server](https://www.openshift.com/blog/accessing-codeready-containers-on-a-remote-server/) by Jason Dobies  
 [Overview: running crc on a remote server](https://gist.github.com/tmckayus/8e843f90c44ac841d0673434c7de0c6a) by [Trevor McKay](https://gist.github.com/tmckayus)  
-[Deploy Bare-Metal Clusters with CRC](https://gist.github.com/v1k0d3n/9ceec7589b5bab0b61b85c2a1e1c463c)
+[Deploy Bare-Metal Clusters with CRC](https://gist.github.com/v1k0d3n/9ceec7589b5bab0b61b85c2a1e1c463c) by Brandon B. Jozsa
 
 Features
 --------
@@ -109,9 +109,22 @@ You can get pull secert [here](https://cloud.redhat.com/openshift/install/pull-s
 
 Deployment Flags
 ---------------
-**Start a deployment**
+**Start a full deployment**
 ```
-ansible-playbook  -i inventory deploy-crc.yml  -K
+ansible-playbook  -i inventory deploy-crc.yml --tags download_crc,extract_crc,configure_oc_cli,setup_crc,start_crc_deployment,configure_dnsmaq,configure_ha_proxy -K
+```
+
+Manual steps
+------------
+**Download and install CRC**
+```
+ansible-playbook  -i inventory deploy-crc.yml --tags download_crc,extract_crc  -K
+```
+
+
+**Configure OpenShift cli**
+```
+ansible-playbook  -i inventory deploy-crc.yml --tags configure_oc_cli -K
 ```
 
 **Setup crc and start deployment**
@@ -119,24 +132,14 @@ ansible-playbook  -i inventory deploy-crc.yml  -K
 ansible-playbook  -i inventory deploy-crc.yml --tags setup_crc,start_crc_deployment  -K
 ```
 
-**Download and install CRC**
+**Configure dnsmasq**
 ```
-ansible-playbook  -i inventory deploy-crc.yml --tags download_crc,extract_crc  -K
-```
-
-**Configure OpenShift cli**
-```
-ansible-playbook  -i inventory deploy-crc.yml --tags configure_oc_cli -K
+ansible-playbook  -i inventory deploy-crc.yml --tags configure_dnsmaq  -K
 ```
 
 **Configure HAPROXY**
 ```
 ansible-playbook  -i inventory deploy-crc.yml --tags configure_ha_proxy  -K
-```
-
-**Configure dnsmasq**
-```
-ansible-playbook  -i inventory deploy-crc.yml --tags configure_dnsmaq  -K
 ```
 
 **Get crc url and login info**
@@ -148,6 +151,15 @@ ansible-playbook  -i inventory deploy-crc.yml --tags get_codeready_info
 ```
 ansible-playbook  -i inventory deploy-crc.yml --extra-vars "delete_crc_deployment=true" -K 
 ```
+
+PostSteps
+---------
+Add the following to your hosts file to access crc remotly
+`change 192.168.1.10 to your ip`
+```
+192.168.1.10 console-openshift-console.apps-crc.testing oauth-openshift.apps-crc.testing
+```
+
 
 Debug info
 ----------

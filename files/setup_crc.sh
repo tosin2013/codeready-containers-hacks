@@ -2,4 +2,5 @@
 set -xe
 
 #export PATH=/home/admin/crc-linux-1.8.0-amd64:$PATH
-crc setup --log-level debug| tee /tmp/crc_setup.log
+/usr/local/bin/crc config set consent-telemetry yes| tee /tmp/crc_setup.log
+/usr/local/bin/crc setup | tee /tmp/crc_setup.log

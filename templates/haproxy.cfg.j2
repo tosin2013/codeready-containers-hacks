@@ -19,7 +19,7 @@ backend apps
 mode tcp
 balance roundrobin
 option ssl-hello-chk
-server webserver1 {{ crc_ip_address }} check
+server webserver1 {{ crc_ip_address }}:443 check
 
 frontend api
 bind {{ haproxy_ip }}:6443
