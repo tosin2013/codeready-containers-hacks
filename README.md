@@ -47,14 +47,15 @@ use_all_in_one_dnsmasq | Use current machine as dnsmasq server | true
 log_level              | Change log level of crc start command | info
 crc_ip_address | Default CRC ip address| 192.168.130.11
 ocp4_release  | OCP release folder for cli | latest
-ocp4_version   | OCP cli version | 4.4.3
+ocp4_version   | OCP cli version | latest
 ocp4_release_url | OCP release url | "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{ ocp4_release }}/"
-ocp4_client | OCP cli filename | ""openshift-client-linux-{{ ocp4_version }}.tar.gz"
+ocp4_client | OCP cli filename | "openshift-client-linux-{{ ocp4_version }}.tar.gz"
 remove_oc_tool | remove oc cli  | false
 delete_crc_deployment | delete CodeReady Containers deployment  | false
 
 Dependencies
 ------------
+**Home drive should have 50 Gig or better**
 
 **On RHEL 8.x**
 * Register system
@@ -73,12 +74,20 @@ chmod +x configure-sudo-user.sh
 ./configure-sudo-user.sh
 ```
 
-RHEL 8.x Configure system
+Configure RHEL 8.x  system
 ```
 sudo su - sudouser
 curl -OL https://gist.githubusercontent.com/tosin2013/ae925297c1a257a1b9ac8157bcc81f31/raw/142d8dd142b031d59c14a7a7ad6f3000ad775453/configure-rhel8.x.sh
 chmod +x configure-rhel8.x.sh
 ./configure-rhel8.x.sh
+```
+
+Optional: Configure Fedora system
+```
+sudo su - sudouser
+curl -OL https://gist.githubusercontent.com/tosin2013/a2af69a0814b38ddf3d98cf8ac5fcf0d/raw/42e0e8a7797a0e71545b3b72689cbf588af293f8/configure-fedora.sh
+chmod +x configure-fedora.sh
+./configure-fedora.sh
 ```
 
 Example Playbook
@@ -130,7 +139,7 @@ ansible-playbook  -i inventory deploy-crc.yml --tags configure_oc_cli -K
 **Setup crc and start deployment**
 ```
 ansible-playbook  -i inventory deploy-crc.yml --tags setup_crc,start_crc_deployment  -K
-```
+```vgdisplay
 
 **Configure dnsmasq**
 ```
@@ -154,11 +163,14 @@ ansible-playbook  -i inventory deploy-crc.yml --extra-vars "delete_crc_deploymen
 
 PostSteps
 ---------
-Add the following to your hosts file to access crc remotly
+Option 1: Add a custom zone to your dns
+
+Option 2: Add the following to your hosts file to access crc remotly
 `change 192.168.1.10 to your ip`
 ```
 192.168.1.10 console-openshift-console.apps-crc.testing oauth-openshift.apps-crc.testing
 ```
+
 
 
 Debug info

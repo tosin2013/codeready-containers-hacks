@@ -6,6 +6,7 @@
       - qemu-kvm
       - NetworkManager
       - dnsmasq
+      - jq
     state: present
   become: true
   become_user: root
@@ -69,6 +70,7 @@
     enabled: yes
   become: true
   become_user: root
+  when: ansible_facts['distribution'] == "RedHat"
   tags:
   - setup_crc
 

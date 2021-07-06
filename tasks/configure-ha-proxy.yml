@@ -50,6 +50,26 @@
   tags:
   - configure_ha_proxy
 
+- name: enable  port 80 tcp
+  firewalld:
+    port: 80/tcp
+    permanent: yes
+    state: enabled
+  become: true
+  become_user: root
+  tags:
+  - configure_ha_proxy
+
+  - name: enable  port 1936 tcp
+  firewalld:
+    port: 1936/tcp
+    permanent: yes
+    state: enabled
+  become: true
+  become_user: root
+  tags:
+  - configure_ha_proxy
+
 - name: restart firewalld service
   systemd:
     name: firewalld
@@ -62,6 +82,30 @@
 
 - name: Configure semange port for http on 6443
   command: semanage port -a -t http_port_t -p tcp 6443
+  become: true
+  become_user: root
+  ignore_errors: yes
+  tags:
+  - configure_ha_proxy
+
+- name: Configure semange port for http on 443
+  command: semanage port -a -t http_port_t -p tcp 443
+  become: true
+  become_user: root
+  ignore_errors: yes
+  tags:
+  - configure_ha_proxy
+
+- name: Configure semange port for http on 80
+  command: semanage port -a -t http_port_t -p tcp 80
+  become: true
+  become_user: root
+  ignore_errors: yes
+  tags:
+  - configure_ha_proxy
+
+- name: Configure semange port for http on 1936
+  command: semanage port -a -t http_port_t -p tcp 1936
   become: true
   become_user: root
   ignore_errors: yes
