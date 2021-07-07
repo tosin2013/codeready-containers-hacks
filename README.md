@@ -139,7 +139,7 @@ ansible-playbook  -i inventory deploy-crc.yml --tags configure_oc_cli -K
 **Setup crc and start deployment**
 ```
 ansible-playbook  -i inventory deploy-crc.yml --tags setup_crc,start_crc_deployment  -K
-```vgdisplay
+```
 
 **Configure dnsmasq**
 ```
