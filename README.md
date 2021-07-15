@@ -201,7 +201,7 @@ Option 2: Add the following to your hosts file to access crc remotly
 ```
 
 **Install ODF-Nano on CRC**  
-Install [ODF-Nano](https://github.com/ksingh7/odf-nano) - ODF-Nano lets you deploy OpenShift Data Foundation on CRC
+*  [ODF-Nano](https://github.com/ksingh7/odf-nano)  lets you deploy OpenShift Data Foundation on CRC
 
 Debug info
 ----------
