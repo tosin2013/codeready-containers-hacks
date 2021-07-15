@@ -165,6 +165,7 @@ ansible-playbook  -i inventory deploy-crc.yml --extra-vars "delete_crc_deploymen
 
 Post Steps
 ---------
+**Configure DNS for external access**
 Option 1: Add a custom zone to your dns
 `Example using bind or named`
 ```
@@ -198,8 +199,8 @@ Option 2: Add the following to your hosts file to access crc remotly
 ```
 192.168.1.10 console-openshift-console.apps-crc.testing oauth-openshift.apps-crc.testing api.crc.testing
 ```
-
-Install [odf-nano](https://github.com/ksingh7/odf-nano) - ODF-Nano lets you deploy OpenShift Data Foundation on CRC
+**Install ODF-Nano on CRC**
+Install [ODF-Nano](https://github.com/ksingh7/odf-nano) - ODF-Nano lets you deploy OpenShift Data Foundation on CRC
 
 Debug info
 ----------
