@@ -199,6 +199,7 @@ Option 2: Add the following to your hosts file to access crc remotly
 192.168.1.10 console-openshift-console.apps-crc.testing oauth-openshift.apps-crc.testing api.crc.testing
 ```
 
+Install [odf-nano](https://github.com/ksingh7/odf-nano) - ODF-Nano lets you deploy OpenShift Data Foundation on CRC
 
 Debug info
 ----------
