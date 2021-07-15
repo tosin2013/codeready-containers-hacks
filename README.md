@@ -183,8 +183,8 @@ $ORIGIN testing.
 @	IN	NS	testing.
 @	IN	A	127.0.0.1
 @	IN	AAAA	::1
-@   IN  A   10.0.1.239
-ns1			IN	A	10.0.1.239
+@   IN  A   192.168.1.2
+ns1			IN	A	192.168.1.2
 
 api.crc.testing.                                                IN      A       192.168.1.10
 assisted-service-assisted-installer.apps-crc.testing.           IN      A       192.168.1.10
