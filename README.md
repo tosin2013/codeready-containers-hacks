@@ -196,7 +196,7 @@ console-openshift-console.apps-crc.testing.                     IN      A       
 Option 2: Add the following to your hosts file to access crc remotly
 `change 192.168.1.10 to your ip`
 ```
-192.168.1.10 console-openshift-console.apps-crc.testing oauth-openshift.apps-crc.testing
+192.168.1.10 console-openshift-console.apps-crc.testing oauth-openshift.apps-crc.testing api.crc.testing
 ```
 
 
