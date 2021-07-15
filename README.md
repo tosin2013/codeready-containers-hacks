@@ -16,7 +16,7 @@ Requirements
 
 **GET SHA** 
 ```
-$ curl -OL https://mirror.openshift.com/pub/openshift-v4/clients/crc/1.28.0/sha256sum.txt
+$ curl -OL https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/sha256sum.txt
 $ cat sha256sum.txt | grep crc-linux-amd64.tar.xz | awk '{print $1}'
 ```
 
@@ -52,6 +52,7 @@ ocp4_release_url | OCP release url | "https://mirror.openshift.com/pub/openshift
 ocp4_client | OCP cli filename | "openshift-client-linux-{{ ocp4_version }}.tar.gz"
 remove_oc_tool | remove oc cli  | false
 delete_crc_deployment | delete CodeReady Containers deployment  | false
+forward_server | Server to manage external requests | 1.1.1.1
 
 Dependencies
 ------------
@@ -99,8 +100,8 @@ You can get pull secert [here](https://cloud.redhat.com/openshift/install/pull-s
 - hosts: servers
   become: yes
   vars:
-    crc_version: 1.28.0
-    crc_sha: 26c2ef84204233159e3cd33665e5b5fc7a169f88a884f5e50865b4b0a15520fa
+    crc_version: latest
+    crc_sha: 659046b3e478ef89563babef59c1cacdefe91ed32e844bac4504dba68e4a9f88
     pull_secert_path: /tmp/pull-secert.txt
     pull_secert_content: |
       changeme
@@ -112,6 +113,7 @@ You can get pull secert [here](https://cloud.redhat.com/openshift/install/pull-s
     ocp4_version: 4.7.16
     remove_oc_tool: false
     delete_crc_deployment: false
+    forward_server: 1.1.1.1
   roles:
   - codeready-containers-hacks
 ```
@@ -161,16 +163,41 @@ ansible-playbook  -i inventory deploy-crc.yml --tags get_codeready_info
 ansible-playbook  -i inventory deploy-crc.yml --extra-vars "delete_crc_deployment=true" -K 
 ```
 
-PostSteps
+Post Steps
 ---------
 Option 1: Add a custom zone to your dns
+`Example using bind or named`
+```
+;
+; BIND data file for local loopback interface
+;
+$TTL	604800
+$ORIGIN testing.
+@	IN	SOA	ns.testing. admin.testing. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	testing.
+@	IN	A	127.0.0.1
+@	IN	AAAA	::1
+@   IN  A   10.0.1.239
+ns1			IN	A	10.0.1.239
+
+api.crc.testing.                                                IN      A       192.168.1.10
+assisted-service-assisted-installer.apps-crc.testing.           IN      A       192.168.1.10
+oauth-openshift.apps-crc.testing.                               IN      A       192.168.1.10
+console-openshift-console.apps-crc.testing.                     IN      A       192.168.1.10
+
+```
 
 Option 2: Add the following to your hosts file to access crc remotly
 `change 192.168.1.10 to your ip`
 ```
 192.168.1.10 console-openshift-console.apps-crc.testing oauth-openshift.apps-crc.testing
 ```
-
 
 
 Debug info

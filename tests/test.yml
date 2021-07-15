@@ -2,8 +2,8 @@
 - hosts: crc_device
   remote_user: admin
   vars: 
-    crc_version: 1.28.0
-    crc_sha: 26c2ef84204233159e3cd33665e5b5fc7a169f88a884f5e50865b4b0a15520fa
+    crc_version: latest
+    crc_sha: 659046b3e478ef89563babef59c1cacdefe91ed32e844bac4504dba68e4a9f88
     pull_secert_path: /tmp/pull-secert.txt
     pull_secert_content: |
       changeme
@@ -15,5 +15,6 @@
     ocp4_version: 4.7.16
     remove_oc_tool: false
     delete_crc_deployment: false
+    forward_server: 1.1.1.1
   roles:
     - codeready-containers-hacks

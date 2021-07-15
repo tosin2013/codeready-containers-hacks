@@ -1,7 +1,7 @@
 ---
 # defaults file for codeready-containers-hack
-crc_version: 1.10.0
-crc_sha: 97aa185f6ff88560611f81fbf5991cfced814e8d9ac796947c7bef6374ee7af3
+crc_version: latest
+crc_sha: 659046b3e478ef89563babef59c1cacdefe91ed32e844bac4504dba68e4a9f88
 crc_url: https://mirror.openshift.com/pub/openshift-v4/clients/crc/
 crc_file_name: crc-linux-amd64.tar.xz
 pull_secert_path: /tmp/pull-secert.txt
@@ -13,6 +13,7 @@ use_all_in_one_dnsmasq: true
 log_level: info
 crc_ip_address: 192.168.130.11
 delete_crc_deployment: false
+forward_server: 1.1.1.1
 
 ocp4_release: latest
 ocp4_release_url: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{ ocp4_release }}/"

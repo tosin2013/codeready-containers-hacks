@@ -50,6 +50,28 @@
   tags:
   - configure_ha_proxy
 
+- name: Add masquerade to public
+  ansible.posix.firewalld:
+    masquerade: yes
+    state: enabled
+    permanent: yes
+    zone: public
+  become: true
+  become_user: root
+  tags:
+  - configure_ha_proxy
+
+- name: Add masquerade to libvirt
+  ansible.posix.firewalld:
+    masquerade: yes
+    state: enabled
+    permanent: yes
+    zone: libvirt
+  become: true
+  become_user: root
+  tags:
+  - configure_ha_proxy
+
 - name: enable  port 80 tcp
   firewalld:
     port: 80/tcp

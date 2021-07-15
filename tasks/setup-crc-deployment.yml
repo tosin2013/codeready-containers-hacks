@@ -75,7 +75,7 @@
   - setup_crc
 
 - name: Set up the new CodeReady Containers release
-  script: "files/setup_crc.sh"
+  script: "files/setup_crc.sh  {{ forward_server }}"
   tags:
   - setup_crc
 

@@ -33,6 +33,26 @@
   tags:
   - configure_dnsmaq
 
+- name: Configure forwarding IP for dns mask
+  lineinfile:
+    path: /etc/dnsmasq.conf
+    insertafter: "^#server=/localnet/192.168.0.1"
+    line: "server=/.com/{{ forward_server }}"
+  become: true
+  become_user: root
+  tags:
+  - configure_dnsmaq
+
+  - name: Configure forwarding IP for dns mask
+  lineinfile:
+    path: /etc/dnsmasq.conf
+    insertafter: "^#server=/localnet/192.168.0.1"
+    line: "server=/.io/{{ forward_server }}"
+  become: true
+  become_user: root
+  tags:
+  - configure_dnsmaq
+
 - name: Ensure bind-interfaces is enabled
   lineinfile:
     path: /etc/dnsmasq.conf
