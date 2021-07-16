@@ -208,6 +208,15 @@ Debug info
 * During setup the new CodeReady Containers release tasks
   * `tail -f /tmp/crc_setup.log`
   * or `tail -f  tail -f ~/.crc/crc.log`
+* Validate configs on crc 
+```
+$ crc config view
+- consent-telemetry                     : yes
+- cpus                                  : 8
+- memory                                : 96000
+- nameserver                            : 1.1.1.1
+
+```
 
 To-Do
 -------
