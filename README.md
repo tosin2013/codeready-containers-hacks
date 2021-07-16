@@ -191,7 +191,7 @@ api.crc.testing.                                                IN      A       
 assisted-service-assisted-installer.apps-crc.testing.           IN      A       192.168.1.10
 oauth-openshift.apps-crc.testing.                               IN      A       192.168.1.10
 console-openshift-console.apps-crc.testing.                     IN      A       192.168.1.10
-
+*.apps-crc.testing.                                             IN      A       192.168.1.10
 ```
 
 Option 2: Add the following to your hosts file to access crc remotly
