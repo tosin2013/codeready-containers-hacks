@@ -13,6 +13,8 @@ Requirements
 * IF using RHEL make sure it is registered
 * OpenShift CodeReady WorkSpaces  pull secert 
   * https://cloud.redhat.com/openshift/install/crc/installer-provisioned
+* Anisble post fix module
+  * `ansible-galaxy collection install ansible.posix`
 
 **GET SHA** 
 ```
