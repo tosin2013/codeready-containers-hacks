@@ -88,7 +88,7 @@ chmod +x configure-rhel8.x.sh
 Optional: Configure Fedora system
 ```
 sudo su - sudouser
-curl -OL https://gist.githubusercontent.com/tosin2013/a2af69a0814b38ddf3d98cf8ac5fcf0d/raw/42e0e8a7797a0e71545b3b72689cbf588af293f8/configure-fedora.sh
+curl -OL https://gist.githubusercontent.com/tosin2013/a2af69a0814b38ddf3d98cf8ac5fcf0d/raw/5aed9e7f4a407d8767fe449b763ab8cf11984468/configure-fedora.sh
 chmod +x configure-fedora.sh
 ./configure-fedora.sh
 ```
