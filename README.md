@@ -38,7 +38,7 @@ Role Variables
 Type  | Description  | Default Value
 --|---|--
 crc_version  | Target CRC version  | latest
-crc_sha      | SHA informaqtion of the crc-linux-amd64.tar.xz file | 659046b3e478ef89563babef59c1cacdefe91ed32e844bac4504dba68e4a9f88
+crc_sha      | SHA informaqtion of the crc-linux-amd64.tar.xz file | 179a5f41ce875859a403f79ce0fd1917701bc4c4fbc12a776e5078876dd07743
 crc_url      |  CRC download URL | https://mirror.openshift.com/pub/openshift-v4/clients/crc/
 crc_file_name  | CRC filename  | crc-linux-amd64.tar.xz
 pull_secert_path | default path of pull secert | /tmp/pull-secert.txt
