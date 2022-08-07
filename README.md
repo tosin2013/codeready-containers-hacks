@@ -11,7 +11,7 @@ Requirements
 *  Ansible 
 *  Fedora or RHEL 8.x
 * IF using RHEL make sure it is registered
-* OpenShift CodeReady WorkSpaces  pull secert 
+* OpenShift CodeReady WorkSpaces  pull secret 
   * https://cloud.redhat.com/openshift/install/crc/installer-provisioned
 * Anisble post fix module
   * `ansible-galaxy collection install ansible.posix`
