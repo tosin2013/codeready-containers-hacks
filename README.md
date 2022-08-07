@@ -41,8 +41,8 @@ crc_version  | Target CRC version  | latest
 crc_sha      | SHA informaqtion of the crc-linux-amd64.tar.xz file | 179a5f41ce875859a403f79ce0fd1917701bc4c4fbc12a776e5078876dd07743
 crc_url      |  CRC download URL | https://mirror.openshift.com/pub/openshift-v4/clients/crc/
 crc_file_name  | CRC filename  | crc-linux-amd64.tar.xz
-pull_secert_path | default path of pull secert | /tmp/pull-secert.txt
-pull_secert_content: | pull secert content     |  changeme
+pull_secret_path | default path of pull secret | /tmp/pull-secert.txt
+pull_secret_content: | pull secret content     |  changeme
 use_all_in_one_haproxy | Use current machine as haproxy LB | true
 haproxy_ip             | Set ha proxy ip if above is set to flase **NOT TESTED**| ""
 use_all_in_one_dnsmasq | Use current machine as dnsmasq server | true
